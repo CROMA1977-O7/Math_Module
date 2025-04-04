@@ -237,10 +237,10 @@ public:
 			Type						 m_Buffer[2];									///< 資料空間
 
 										 /// 預設的建構式
-										 CVector2();
+										 //CVector2();
 										 /// 建構式
 										 template<typename InputType>
-										 CVector2(InputType Value0, InputType Value1);
+										 CVector2(InputType Value0 = 0, InputType Value1 = 0);
 										 /// 建構式
 										 template<typename InputType>
 										 CVector2(InputType* Array);
@@ -3164,7 +3164,7 @@ inline bool CVectorReference2<Type>::LessEqual(const CVectorReference2<InputType
 }
 
 ///////////////////////////////////////////////////////////
-
+/*
 template<typename Type>
 inline CVector2<Type>::CVector2() :
 	CVectorReference2<Type>(m_Buffer[0], m_Buffer[1])
@@ -3172,7 +3172,7 @@ inline CVector2<Type>::CVector2() :
 	m_Buffer[0] = 0;
 	m_Buffer[1] = 0;
 }
-
+*/
 template<typename Type>
 template<typename InputType>
 inline CVector2<Type>::CVector2(InputType Value0, InputType Value1) :
