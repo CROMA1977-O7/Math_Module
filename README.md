@@ -13,7 +13,7 @@ CVectorReference2d 代表 一個 2x1 double 精度的 CVectorRefence 物件型�
 
 CMatrix2d 代表一個 2x2 double 精度的 CMatrix 物件型態
 
-CVectorRefence 可以將對應精度的變數組成一個向量
+CVectorReference 可以將對應精度的變數組成一個向量
 
     // 用 e0, e1 組成 向量 P0
     double e0, e1;
