@@ -6,8 +6,6 @@
 using namespace std;
 
 void TestVectorReference2() {
-
-
     // 用 e0, e1 組成 向量 P0
     double e0, e1;
     CVectorReference2d P0(e0, e1);  // e0, e1 尚未初始化
@@ -32,10 +30,10 @@ void TestVectorReference2() {
     P3.Set(iBuffer);                // P0 & P3 = { 1,-1}
     P2.Set(1, 0);                   //      P2 = { 1, 0}
     P1.Set(0.0f, 1.0f);             //      P1 = { 0, 1}
+    P3.Set(P1, P2, 0.5);
     P2.Swap(P1);                    // P1 與 P2 交換數值
     P3 = P2;                        // P0 & P3 = P2
 
-    CVector2d P5;
     // CVectorReference 可以進行多種線性代數的運算
     double Dot = P2.Dot(P1);                    // P2.m_x * P1.m_x + P2.m_y * P1.m_y
     double Length = P2.GetLength();             // sqrt(P2.m_x*P2.m_x + P2.m_y+P2.m_y)

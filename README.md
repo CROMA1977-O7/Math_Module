@@ -3,6 +3,9 @@
 基於 OpenGL 1.2 格式的矩陣運算
 提供 2、3、4 維的矩陣運算
 
+安裝方式在專案中 include Math_Module.hpp 即可
+
+    #include "Math_Module.hpp"
 
 模組由三種基本類別組成 CVectorReference、CVector、CMatrix 命名由 型態、維度、資料精度 組成，例如
 
@@ -42,6 +45,7 @@ CVectorReference 可以使用多種形態進行賦值
     P3.Set(iBuffer);                // P0 & P3 = { 1,-1}
     P2.Set(1, 0);                   //      P2 = { 1, 0}
     P1.Set(0.0f, 1.0f);             //      P1 = { 0, 1}
+    P3.Set(P1, P2, 0.5);            // P3 = { (P2.m_x-P1.m_x) * 0.5 + P1.m_x, (P2.m_y-P1.m_y) * 0.5 + P1.m_y}
     P2.Swap(P1);                    // P1 與 P2 交換數值
     P3 = P2;                        // P0 & P3 = P2
 

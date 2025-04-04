@@ -91,6 +91,10 @@ public:
 										 /// 設定向量
 										 template<typename InputType>
 			CVectorReference2<Type> &	 Set(const InputType * Array);
+										 /// 設定向量 以兩點間的比例設定座標
+										 template<typename InputType>
+			CVectorReference2<Type> &	 Set(const CVectorReference2<InputType>& P0, const CVectorReference2<InputType>& P1, double t);
+
 										 /// 計算兩向量的 Dot
 										 template<typename InputType>
 			double						 Dot(const CVectorReference2<InputType> & Vector);
@@ -237,7 +241,7 @@ public:
 			Type						 m_Buffer[2];									///< 資料空間
 
 										 /// 預設的建構式
-										 //CVector2();
+										 CVector2();
 										 /// 建構式
 										 template<typename InputType>
 										 CVector2(InputType Value0 = 0, InputType Value1 = 0);
@@ -2828,6 +2832,15 @@ inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const InputType* Ar
 
 template<typename Type>
 template<typename InputType>
+inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const CVectorReference2<InputType>& P0, const CVectorReference2<InputType>& P1, double t)
+{
+	m_x = (P1.m_x - P0.m_x) * t + P0.m_x;
+	m_y = (P1.m_y - P0.m_y) * t + P0.m_y;
+	return *this;
+}
+
+template<typename Type>
+template<typename InputType>
 inline double CVectorReference2<Type>::Dot(const CVectorReference2<InputType>& Vector) {
 	return (double)m_x * Vector.m_x + m_y * Vector.m_y;
 }
@@ -3164,7 +3177,7 @@ inline bool CVectorReference2<Type>::LessEqual(const CVectorReference2<InputType
 }
 
 ///////////////////////////////////////////////////////////
-/*
+
 template<typename Type>
 inline CVector2<Type>::CVector2() :
 	CVectorReference2<Type>(m_Buffer[0], m_Buffer[1])
@@ -3172,7 +3185,7 @@ inline CVector2<Type>::CVector2() :
 	m_Buffer[0] = 0;
 	m_Buffer[1] = 0;
 }
-*/
+
 template<typename Type>
 template<typename InputType>
 inline CVector2<Type>::CVector2(InputType Value0, InputType Value1) :
