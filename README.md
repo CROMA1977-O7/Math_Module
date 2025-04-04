@@ -61,26 +61,26 @@ CVectorReference 可以進行多種線性代數的運算
 
 包含基本的符號運算
 
-    P3 = P2 + P1;                               // P3 = {P2.m_x + P1.m_x, P2.m_y + P1.m_y}
-    P3 = P2 - P1;                               // P3 = {P2.m_x - P1.m_x, P2.m_y - P1.m_y}
-    P3 = P2 * 3;                                // P3 = {P2.m_x * 3, P2.m_y * 3}
-    P3 = P2 * P1;                               // P3 = {P2.m_x * P1.m_x, P2.m_y * P1.m_y}
-    P3 = P2 / 3;                                // P3 = {P2.m_x / 3, P2.m_y / 3}
-    P3 = P2 / P1;                               // P3 = {P2.m_x / P1.m_x, P2.m_y / P1.m_y}
-    P3 += P1;                                   // P3 = {P3.m_x + P1.m_x, P3.m_y + P1.m_y}
-    P3 -= P1;                                   // P3 = {P3.m_x - P1.m_x, P3.m_y - P1.m_y}
-    P3 *= 3;                                    // P3 = {P3.m_x * 3, P3.m_y * 3}
-    P3 *= P1;                                   // P3 = {P3.m_x * P1.m_x, P3.m_y * P1.m_y}
-    P3 /= 3;                                    // P3 = {P3.m_x / 3, P3.m_y / 3}
-    P3 /= P1;                                   // P3 = {P3.m_x / P1.m_x, P3.m_y / P1.m_y}
+    P3 = P2 + P1;           // P3 = {P2.m_x + P1.m_x, P2.m_y + P1.m_y}
+    P3 = P2 - P1;           // P3 = {P2.m_x - P1.m_x, P2.m_y - P1.m_y}
+    P3 = P2 * 3;            // P3 = {P2.m_x * 3, P2.m_y * 3}
+    P3 = P2 * P1;           // P3 = {P2.m_x * P1.m_x, P2.m_y * P1.m_y}
+    P3 = P2 / 3;            // P3 = {P2.m_x / 3, P2.m_y / 3}
+    P3 = P2 / P1;           // P3 = {P2.m_x / P1.m_x, P2.m_y / P1.m_y}
+    P3 += P1;               // P3 = {P3.m_x + P1.m_x, P3.m_y + P1.m_y}
+    P3 -= P1;               // P3 = {P3.m_x - P1.m_x, P3.m_y - P1.m_y}
+    P3 *= 3;                // P3 = {P3.m_x * 3, P3.m_y * 3}
+    P3 *= P1;               // P3 = {P3.m_x * P1.m_x, P3.m_y * P1.m_y}
+    P3 /= 3;                // P3 = {P3.m_x / 3, P3.m_y / 3}
+    P3 /= P1;               // P3 = {P3.m_x / P1.m_x, P3.m_y / P1.m_y}
 
 基本的邏輯判斷
 
     bool Flag;
-    Flag = P2.IsZero();                         // (P2.m_x * P2.m_x + P2.m_y * P2.my) < 0.000001 ? true : false
-    Flag = P3 == P1;                            // (P3.m_x - P1.m_x) ^ 2 + (P3.m_y - P1.my) ^ 2 < 0.000001 ? true : false
-    Flag = P3 != P1;                            // (P3.m_x - P1.m_x) ^ 2 + (P3.m_y - P1.my) ^ 2 >= 0.000001 ? true : false
-    Flag = P3 > P1;                             // P3.m_x > P1.m_x && P3.m_y > P1.my ? true : false
-    Flag = P3 < P1;                             // P3.m_x < P1.m_x && P3.m_y < P1.my ? true : false
-    Flag = P3 >= P1;                            // P3.m_x >= P1.m_x && P3.m_y >= P1.my ? true : false
-    Flag = P3 <= P1;                            // P3.m_x <= P1.m_x && P3.m_y <= P1.my ? true : false
+    Flag = P2.IsZero();     // (P2.m_x * P2.m_x + P2.m_y * P2.my) < 0.000001 ? true : false
+    Flag = P3 == P1;        // (P3.m_x - P1.m_x) ^ 2 + (P3.m_y - P1.my) ^ 2 < 0.000001 ? true : false
+    Flag = P3 != P1;        // (P3.m_x - P1.m_x) ^ 2 + (P3.m_y - P1.my) ^ 2 >= 0.000001 ? true : false
+    Flag = P3 > P1;         // P3.m_x > P1.m_x && P3.m_y > P1.my ? true : false
+    Flag = P3 < P1;         // P3.m_x < P1.m_x && P3.m_y < P1.my ? true : false
+    Flag = P3 >= P1;        // P3.m_x >= P1.m_x && P3.m_y >= P1.my ? true : false
+    Flag = P3 <= P1;        // P3.m_x <= P1.m_x && P3.m_y <= P1.my ? true : false
