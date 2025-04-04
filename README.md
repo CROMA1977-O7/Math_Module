@@ -10,6 +10,7 @@
 模組由三種基本類別組成 CVectorReference、CVector、CMatrix 命名由 型態、維度、資料精度 組成，例如
 
 CVectorReference2d 代表 一個 2x1 double 精度的 CVectorRefence 物件型態
+
 CMatrix2d 代表一個 2x2 double 精度的 CMatrix 物件型態
 
 CVectorRefence 可以將對應精度的變數組成一個向量
