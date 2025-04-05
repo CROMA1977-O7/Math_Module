@@ -86,14 +86,14 @@ public:
 										 //////////////////////////////////////////////////////////////////////////
 
 										 /// 設定向量
-										 template<typename InputType>
-			CVectorReference2<Type> &	 Set(const InputType x,const InputType y);						
+										 template<typename InputType0, typename InputType1>
+			CVectorReference2<Type> &	 Set(const InputType0 x,const InputType1 y);						
 										 /// 設定向量
 										 template<typename InputType>
 			CVectorReference2<Type> &	 Set(const InputType * Array);
 										 /// 設定向量 以兩點間的比例設定座標
-										 template<typename InputType>
-			CVectorReference2<Type> &	 Set(const CVectorReference2<InputType>& P0, const CVectorReference2<InputType>& P1, double t);
+										 template<typename InputType0, typename InputType1>
+			CVectorReference2<Type> &	 Set(const CVectorReference2<InputType0>& P0, const CVectorReference2<InputType1>& P1, double t);
 
 										 /// 計算兩向量的 Dot
 										 template<typename InputType>
@@ -243,8 +243,8 @@ public:
 										 /// 預設的建構式
 										 CVector2();
 										 /// 建構式
-										 template<typename InputType>
-										 CVector2(InputType Value0 = 0, InputType Value1 = 0);
+										 template<typename InputType0, typename InputType1>
+										 CVector2(InputType0 Value0 = 0, InputType1 Value1 = 0);
 										 /// 建構式
 										 template<typename InputType>
 										 CVector2(InputType* Array);
@@ -381,12 +381,15 @@ public:
 										 /// 拷貝建構式 複製對方參考的對象
 										 CVectorReference3(const CVectorReference3<Type> &Vector);
 			//////////////////////////////////////////////////////////////////////////
-										 /// 設定向量
-										template<typename InputType>
-			CVectorReference3<Type> &	Set(const InputType x, const InputType y, const InputType z);
+										/// 設定向量
+										template<typename InputType0, typename InputType1, typename InputType2>
+			CVectorReference3<Type> &	Set(const InputType0 x, const InputType1 y, const InputType2 z);
 										/// 設定向量
 										template<typename InputType>
 			CVectorReference3<Type> &	Set(const InputType * Array = nullptr);
+										/// 設定向量 以兩點間的比例設定座標
+										template<typename InputType0, typename InputType1>
+			CVectorReference3<Type> &	Set(const CVectorReference3<InputType0>& P0, const CVectorReference3<InputType1>& P1, double t);
 										/// 計算兩向量的 Dot
 										template<typename InputType>
 			double						Dot(const CVectorReference3<InputType> & Vector);
@@ -549,8 +552,8 @@ public:
 										 /// 預設的建構式
 										 CVector3();
 										 /// 建構式
-										 template<typename InputType>
-										 CVector3(InputType Value0, InputType Value1, InputType Value2);
+										 template<typename InputType0, typename InputType1, typename InputType2>
+										 CVector3(InputType0 Value0, InputType1 Value1, InputType2 Value2);
 										 /// 建構式
 										 template<typename InputType>
 										 CVector3(InputType* Array);
@@ -708,8 +711,8 @@ public:
 
 			//////////////////////////////////////////////////////////////////////////
 										 /// 設定向量
-										 template<typename InputType>
-			CVectorReference4<Type> &	 Set(const InputType x, const InputType y, const InputType z, const InputType w)
+										 template<typename InputType0, typename InputType1, typename InputType2, typename InputType3>
+			CVectorReference4<Type> &	 Set(const InputType0 x, const InputType1 y, const InputType2 z, const InputType3 w)
 										 {
 											m_x = (Type) x; m_y = (Type) y; m_z = (Type) z; m_w = (Type) w;
 											return *this;
@@ -719,6 +722,16 @@ public:
 			CVectorReference4<Type> &	 Set(const InputType * Array)
 										 {
 											m_x = (Type) Array[0]; m_y = (Type) Array[1]; m_z = (Type) Array[2]; m_w = (Type) Array[3];
+											return *this;
+										 }
+										 /// 設定向量 以兩點間的比例設定座標
+										 template<typename InputType0, typename InputType1>
+			CVectorReference4<Type> &	 Set(const CVectorReference4<InputType0>& P0, const CVectorReference4<InputType1>& P1, double t)
+										 {
+											m_x = (P1.m_x - P0.m_x) * t + P0.m_x;
+											m_y = (P1.m_y - P0.m_y) * t + P0.m_y;
+											m_z = (P1.m_z - P0.m_z) * t + P0.m_z;
+											m_w = (P1.m_w - P0.m_w) * t + P0.m_w;
 											return *this;
 										 }
 										 /// 計算兩向量的 Dot ???
@@ -1123,8 +1136,8 @@ public:
 											m_Buffer[0] = 0; m_Buffer[1] = 0; m_Buffer[2] = 0; m_Buffer[3] = 1;
 										 }
 										 /// 建構式
-										 template<typename InputType>
-										 CVector4(const InputType Value0, const InputType Value1, const InputType Value2, const InputType Value3):
+										 template<typename InputType0, typename InputType1, typename InputType2, typename InputType3>
+										 CVector4(const InputType0 Value0, const InputType1 Value1, const InputType2 Value2, const InputType3 Value3):
 										 CVectorReference4<Type>(m_Buffer[0],m_Buffer[1],m_Buffer[2],m_Buffer[3])
 										 {
 											m_Buffer[0] = (Type)Value0; m_Buffer[1] = (Type)Value1;	m_Buffer[2] = (Type)Value2; m_Buffer[3] = (Type)Value3;
@@ -2815,8 +2828,8 @@ inline CVectorReference2<Type>::CVectorReference2(const CVectorReference2<Type>&
 }
 
 template<typename Type>
-template<typename InputType>
-inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const InputType x, const InputType y) {
+template<typename InputType0, typename InputType1>
+inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const InputType0 x, const InputType1 y) {
 	m_x = (Type)x;
 	m_y = (Type)y;
 	return *this;
@@ -2831,8 +2844,8 @@ inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const InputType* Ar
 }
 
 template<typename Type>
-template<typename InputType>
-inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const CVectorReference2<InputType>& P0, const CVectorReference2<InputType>& P1, double t)
+template<typename InputType0, typename InputType1>
+inline CVectorReference2<Type>& CVectorReference2<Type>::Set(const CVectorReference2<InputType0>& P0, const CVectorReference2<InputType1>& P1, double t)
 {
 	m_x = (P1.m_x - P0.m_x) * t + P0.m_x;
 	m_y = (P1.m_y - P0.m_y) * t + P0.m_y;
@@ -3187,8 +3200,8 @@ inline CVector2<Type>::CVector2() :
 }
 
 template<typename Type>
-template<typename InputType>
-inline CVector2<Type>::CVector2(InputType Value0, InputType Value1) :
+template<typename InputType0, typename InputType1>
+inline CVector2<Type>::CVector2(InputType0 Value0, InputType1 Value1) :
 	CVectorReference2<Type>(m_Buffer[0], m_Buffer[1])
 {
 	m_Buffer[0] = (Type)Value0;
@@ -3784,8 +3797,8 @@ inline double CVectorReference3<Type>::GetLength(void) {
 }
 
 template<typename Type>
-template<typename InputType>
-inline CVectorReference3<Type>& CVectorReference3<Type>::Set(const InputType x, const InputType y, const InputType z) {
+template<typename InputType0, typename InputType1, typename InputType2>
+inline CVectorReference3<Type>& CVectorReference3<Type>::Set(const InputType0 x, const InputType1 y, const InputType2 z) {
 	m_x = (Type)x;
 	m_y = (Type)y;
 	m_z = (Type)z;
@@ -3802,6 +3815,16 @@ inline CVectorReference3<Type>& CVectorReference3<Type>::Set(const InputType* Ar
 		m_y = (Type)Array[1];
 		m_z = (Type)Array[2];
 	}return *this;
+}
+
+template<typename Type>
+template<typename InputType0, typename InputType1>
+inline CVectorReference3<Type>& CVectorReference3<Type>::Set(const CVectorReference3<InputType0>& P0, const CVectorReference3<InputType1>& P1, double t)
+{
+	m_x = (P1.m_x - P0.m_x) * t + P0.m_x;
+	m_y = (P1.m_y - P0.m_y) * t + P0.m_y;
+	m_z = (P1.m_z - P0.m_z) * t + P0.m_z;
+	return *this;
 }
 
 template<typename Type>
@@ -4169,8 +4192,8 @@ inline CVector3<Type>::CVector3() :
 }
 
 template<typename Type>
-template<typename InputType>
-inline CVector3<Type>::CVector3(InputType Value0, InputType Value1, InputType Value2) :
+template<typename InputType0, typename InputType1, typename InputType2>
+inline CVector3<Type>::CVector3(InputType0 Value0, InputType1 Value1, InputType2 Value2) :
 	CVectorReference3<Type>(m_Buffer[0], m_Buffer[1], m_Buffer[2])
 {
 	m_Buffer[0] = (Type)Value0;
